@@ -3,6 +3,7 @@ var previewEl = document.getElementById("preview");
 var snowflakesDiv = document.getElementById("snowflakes");
 var modal = document.getElementById("modal");
 var currentId = null;
+var lastPreviewSeed = null;
 
 var CHARS = {
   classic: ["*", "+", "-", "|", "o", ".", "x"],
@@ -83,17 +84,22 @@ document.getElementById("previewBtn").onclick = function() {
   var size = parseInt(form.size.value) || 9;
   var seed = form.seed.value || makeSeed();
   previewEl.textContent = generate(size, seed, form.style.value);
+  lastPreviewSeed = seed;
 };
 
 form.onsubmit = function(e) {
   e.preventDefault();
+  if (!lastPreviewSeed) {
+    alert("Please preview a snowflake first");
+    return;
+  }
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/api/snowflakes");
   xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onload = function() { form.seed.value = ""; previewEl.textContent = ""; load(); };
+  xhr.onload = function() { form.seed.value = ""; previewEl.textContent = ""; lastPreviewSeed = null; load(); };
   xhr.send(JSON.stringify({
     size: parseInt(form.size.value) || 9,
-    seed: form.seed.value || makeSeed(),
+    seed: lastPreviewSeed,
     style: form.style.value
   }));
 };
