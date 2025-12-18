@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Snowflake Generator</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./main.js" defer></script>
+</head>
+<body>
+
+<h1>Snowflake Generator</h1>
+
+<form id="snowflakeForm">
+  <label>Size (1-20): <input type="number" id="size" value="9" min="1" max="20"></label>
+  <label>Seed: <input type="text" id="seed" placeholder="random"></label>
+  <label>Style:
+    <select id="style">
+      <option value="classic">Classic</option>
+      <option value="dense">Dense</option>
+      <option value="minimal">Minimal</option>
+      <option value="mixed">Mixed</option>
+    </select>
+  </label>
+  <div>
+    <button type="button" id="previewBtn">Preview</button>
+    <button type="submit">Create</button>
+  </div>
+</form>
+
+<pre id="preview"></pre>
+
+<div id="snowflakes"></div>
+
+<div id="modal">
+  <div id="modalBox">
+    <pre id="modalPattern"></pre>
+    <p>ID: <span id="modalId"></span> | Size: <span id="modalSize"></span> | <span id="modalStatus"></span></p>
+    <p><span id="modalCreated"></span></p>
+    <div>
+      <button id="meltBtn">Melt</button>
+      <button id="deleteBtn">Delete</button>
+      <button id="closeBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

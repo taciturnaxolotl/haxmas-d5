@@ -1,0 +1,71 @@
+body {
+  font-family: monospace;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#preview:empty {
+  display: none;
+}
+
+#preview {
+  margin-bottom: 20px;
+}
+
+#snowflakes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.card:hover {
+  background: #f0f0f0;
+}
+
+.card.melted {
+  opacity: 0.5;
+}
+
+.card pre {
+  font-size: 6px;
+  line-height: 1;
+  margin: 0;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+#modalBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+}
+
+#modalPattern {
+  font-size: 10px;
+  line-height: 1;
+}
